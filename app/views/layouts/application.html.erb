@@ -7,9 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-  <h1><%= link_to "Rails OAuth 2 App", root_path %></h1>
-  <%= yield %>
-
+  <div class="header">
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+      <a class="pure-menu-heading" href="/">Rails OAuth 2</a>
+      <ul class="pure-menu-list">
+        <li class="pure-menu-item"><%= link_to "Logout", logout_url, class: "pure-menu-link" %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="splash-container">
+    <div class="splash">
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>

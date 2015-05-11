@@ -1,0 +1,74 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body, .splash-container { height: 100%; }
+body {
+  line-height: 1.7em;
+  font-size: 16px;
+}
+
+.home-menu {
+  padding: 0.5em;
+  text-align: center;
+  box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+  text-align: left;
+}
+.home-menu { background: #2d3e50; }
+.pure-menu.pure-menu-fixed { border-bottom: none; }
+.home-menu .pure-menu-heading {
+  color: white;
+  font-weight: 400;
+  font-size: 120%;
+}
+.home-menu .pure-menu-item a { color: white !important; }
+.home-menu a { color: #6FBEF3; }
+.home-menu ul { float: right; }
+.home-menu li a:hover,
+.home-menu li a:focus {
+  background: none;
+  border: none;
+  color: #AECFE5;
+}
+
+.splash-container { background: #1f8dd6; }
+.splash {
+  width: 80%;
+  margin: auto;
+  padding-top: 100px;
+  text-align: center;
+}
+.splash-head {
+  font-size: 300%;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  padding: 1em 1.6em 0;
+  font-weight: 100;
+  border-radius: 5px;
+  line-height: 1em;
+}
+.splash-subhead {
+  width: 70%;
+  margin: 0 auto 1.75em;
+  color: white;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}
+
+.button { border-radius: 4px; }
+.github {
+  background: white;
+  color: #1f8dd6;
+}
+
+#notice {
+  background: #df2d4f;
+  margin: 0 0.1em;
+  padding: 0.3em 1em;
+  color: #fff;
+  font-size: 80%;
+}

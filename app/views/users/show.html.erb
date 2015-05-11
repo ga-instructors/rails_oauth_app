@@ -1,14 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
+<h1 class="splash-head">You're in!</h1>
+<p class="splash-subhead">
+  <strong>Email:</strong> <%= @user.email %><br/>
+  <strong>Name:</strong>  <%= @user.name %>
 </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<p id="notice" <%= 'hidden' unless notice %> ><%= notice %></p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<p>
+  <%= link_to 'Edit this User',  edit_user_path(@user), class: "pure-button button" %>
+  <%= link_to 'Go to User List', users_path,            class: "pure-button button" %>
+</p>
