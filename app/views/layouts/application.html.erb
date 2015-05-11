@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RailsOauthApp</title>
+  <title>Rails OAuth 2 App</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <h1><%= link_to "Rails OAuth 2 App", root_path %></h1>
+  <%= yield %>
 
 </body>
 </html>
