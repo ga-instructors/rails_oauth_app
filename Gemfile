@@ -13,6 +13,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'dotenv-rails'
+
+gem 'rest-client', '~> 1.8'
+gem 'httparty',    '~> 0.13'
+
+gem 'oauth2',      '~> 1.0'
+gem 'octokit',     '~> 3.8'
+gem 'github_api',  '~> 0.12'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
