@@ -46,7 +46,7 @@ as all the requests and responses are formed up in a row.
 
 ## Review the base Rails app
 
-**[branch `baseapp`][baseapp-branch]**   
+**[tag `baseapp`][baseapp-branch]**   
 ... or `git checkout baseapp`
 
 This app follows the basic format of WDI example Rails apps:
@@ -92,7 +92,7 @@ Specifically, the examples show how to do this with:
 
 ### A hand-rolled OAuth 2 web flow
 
-**[commit 0000000][handrolled-commit]**   
+**[commit e867014][handrolled-commit]**   
 ... or `git checkout handrolled`
 
 > This commit adds a series of methods to the `SessionsController`, and 
@@ -115,7 +115,7 @@ abstracted away.*
 
 ### A "low-level" OAuth 2 library: `oauth2`
 
-**[commit 0000000][oauth2gem-commit]**   
+**[commit ad47e9a][oauth2gem-commit]**   
 ... or `git checkout oauth2gem`
 
 *(Uses version 1.0 of the gem.)*
@@ -132,7 +132,7 @@ API.
 
 ### An OAuth flow with a provider-based API wrapper: `octokit`
 
-**[commit 0000000][octokit-commit]**   
+**[commit 28f720d][octokit-commit]**   
 ... or `git checkout octokit`
 
 *(Uses version 3.8 of the gem.)*
@@ -152,7 +152,7 @@ access token, and offers a semantic interface to the developer.
 
 ### A "kitchen sink", all-in-one, API wrapper: `github_api`
 
-**[commit 0000000][github_api-commit]**   
+**[commit 635b5f1][github_api-commit]**   
 ... or `git checkout github_api`
 
 *(Uses version 0.12 of the gem.)*
@@ -236,7 +236,7 @@ chance you may even use each, in different ways, at the same time!
 [fb-gem]: https://github.com/arsduo/koala
 
 [baseapp-branch]:    https://github.com/ga-instructors/rails_oauth_app/tree/baseapp
-[handrolled-commit]: https://github.com/ga-instructors/rails_oauth_app/commit/0000000
-[oauth2gem-commit]:  https://github.com/ga-instructors/rails_oauth_app/commit/0000000
-[octokit-commit]:    https://github.com/ga-instructors/rails_oauth_app/commit/0000000
-[github_api-commit]: https://github.com/ga-instructors/rails_oauth_app/commit/0000000
+[handrolled-commit]: https://github.com/ga-instructors/rails_oauth_app/commit/e86701456f28c443e759f945154771ffd429580f
+[oauth2gem-commit]:  https://github.com/ga-instructors/rails_oauth_app/commit/ad47e9af50f94a18c8e536b9e7a12da5d87079b4
+[octokit-commit]:    https://github.com/ga-instructors/rails_oauth_app/commit/28f720d98d28538b0a8a4326339db03b4d8fe5ec
+[github_api-commit]: https://github.com/ga-instructors/rails_oauth_app/commit/635b5f1242dcb7edb24544306b78d929ddab5c07
