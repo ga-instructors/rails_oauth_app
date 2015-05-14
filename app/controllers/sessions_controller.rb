@@ -4,19 +4,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # make the create token request to the identity provider, which returns an
-    # OAuth2::AccessToken instance; take the "token" itself from the object
-    access_token = github_oauth_client.get_token(params[:code], {
-      redirect_uri: redirect_uri
-    }).token
-
+    # use the Github instance representing the application to get an access
+    # token for the user represented by their auth code
+    access_token = application_client.get_token(params[:code]).token
+    
     # store the access token in the current session
     session[:access_token] = access_token
 
-    # use Octokit to wrap the current user's access token to make simple,
-    # semantic information requests to the GitHub API (see the Application
-    # controller) via current_api_client, which then caches the user data
-    # (the first request) in current_api_user
+    # use the Github instance representing the authenticated user to grab their
+    # profile information
     user = log_in_user_with({
       oauth_uid:    current_user_api_data['id'],
       name:         current_user_api_data['name'],
@@ -32,7 +28,7 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  helper_method :code_uri
+  helper_method :application_client
 
   private
   
@@ -41,20 +37,10 @@ class SessionsController < ApplicationController
     @redirect_uri ||= root_url[0..-2] + oauth_callback_path
   end
 
-  def github_oauth_client
-    @github_oauth_client ||= OAuth2::Client.new(
-      ENV["GITHUB_OAUTH_ID"], 
-      ENV["GITHUB_OAUTH_SECRET"], 
-      site:          'https://github.com',
-      authorize_url: '/login/oauth/authorize',
-      token_url:     '/login/oauth/access_token'
-    ).auth_code
-  end
-
-  def code_uri
-    @code_uri ||= github_oauth_client.authorize_url(
-      :redirect_uri => redirect_uri,
-      :scope => ''
+  def application_client
+    @application_client ||= Github.new(
+      client_id:     ENV["GITHUB_OAUTH_ID"],
+      client_secret: ENV["GITHUB_OAUTH_SECRET"]
     )
   end
 

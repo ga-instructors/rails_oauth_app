@@ -8,11 +8,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_client
-    @current_user_client ||= Octokit::Client.new(access_token: session[:access_token])
+    @current_user_client ||= Github.new(oauth_token: session[:access_token])
   end
 
   def current_user_api_data
-    @current_user_api_data ||= current_user_client.user
+    @current_user_api_data ||= current_user_client.get_request("user").to_hash
   end
 
   def logged_in?

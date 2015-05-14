@@ -3,5 +3,5 @@
     Let's get started. Here is where we will log in to this app using OAuth 2.
 </p>
 <p>
-  <%= link_to 'Log In with GitHub', code_uri, class: "pure-button github button" %>
+  <%= link_to 'Log In with GitHub', application_client.authorize_url, class: "pure-button github button" %>
 </p>
