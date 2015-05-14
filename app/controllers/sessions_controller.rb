@@ -4,28 +4,23 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # make the create token request to the identity provider, returns an
-    # OAuth2::AccessToken instance
-    access_token = github_oauth_client.get_token params[:code], {
+    # make the create token request to the identity provider, which returns an
+    # OAuth2::AccessToken instance; take the "token" itself from the object
+    access_token = github_oauth_client.get_token(params[:code], {
       redirect_uri: redirect_uri
-    }
+    }).token
 
-    # make a second request, with the token, for the authenticated
-    # user's basic information (credentials)
-    credentials = access_token.get('https://api.github.com/user', {
-      headers: {
-        'Authorization' => "token #{access_token.token}",
-        'User-Agent'    => 'request'
-      }
-    }).parsed
+    # store the access token in the current session
+    session[:access_token] = access_token
 
-    # see if the user exists yet (if not, create them) and
-    # then log them in
+    # use Octokit to wrap the current user's access token to make simple,
+    # semantic information requests to the GitHub API (see the Application
+    # controller) via current_api_client, which then caches the user data
+    # (the first request) in current_api_user
     user = log_in_user_with({
-      access_token: access_token.token,
-      oauth_uid:    credentials['id'],
-      name:         credentials['name'],
-      email:        credentials['email']
+      oauth_uid:    current_user_api_data['id'],
+      name:         current_user_api_data['name'],
+      email:        current_user_api_data['email']
     })
 
     # and then redirect to that user's home page
@@ -75,8 +70,7 @@ class SessionsController < ApplicationController
     end
 
     # save the user_id and access token in the session hash
-    session[:access_token] = credentials[:token]
-    session[:user_id]      = user.id
+    session[:user_id] = user.id
 
     # return the user model
     user
